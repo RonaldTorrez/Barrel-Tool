@@ -4,7 +4,7 @@ const config = require('./barrel.config.default')
 
 const DIRECTORIES = config.dir
 const EXCLUSIONS = config.exclusions
-const COMMAND = 'node ./barrel.generator.js'
+const COMMAND = 'node ./node_modules/barrel-tool/src/barrel.generator.js'
 let Count = 0
 
 function executeCommand() {
