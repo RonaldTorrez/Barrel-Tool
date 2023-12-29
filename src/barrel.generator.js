@@ -1,6 +1,13 @@
 const fs = require('fs').promises
-const path = require('path')
 const config = require('./barrel.config.default')
+const {loadFromRoot} = require('./barrel.util')
+const {
+	regExtension,
+	regGetDefaultExport,
+	regGetGeneralExport,
+	regGetNamedExport,
+	regNamedExport
+} = require('./barrel.model')
 
 const SAVE_AS = config.saveAs
 const DIRECTORIES = config.dir
@@ -11,7 +18,7 @@ const SEPARATE_BY_FILES = config.separateByFiles
 const SUB_FOLDERS = config.subFolders
 
 function applyExtension(file) {
-	return USE_EXTENSION ? file : file.replace(/\.[^.]+$/, '')
+	return USE_EXTENSION ? file : file.replace(regExtension, '')
 }
 
 async function existDir(dir) {
@@ -42,23 +49,23 @@ async function writeFile(filePath, content) {
 }
 
 function getDefaultExport(fileContent) {
-	const match = fileContent.match(/export default(?:\s+function\s+(\w+)|\s+(\w+))/)
+	const match = fileContent.match(regGetDefaultExport)
 	return match ? match[1] || match[2] : null
 }
 
 function getGeneralExport(fileContent) {
-	return fileContent.match(/export (?:const|let|var|function|class|interface|type)\s+(\w+)/g) || []
+	return fileContent.match(regGetGeneralExport) || []
 }
 
 function getNamedExport(fileContent) {
-	const match = fileContent.match(/export\s*\{\s*([^}]+)\s*}/g)
-	return match ? match.map(match => match.replace(/export\s*\{\s*|\s*}/g, '').trim()) : []
+	const match = fileContent.match(regGetNamedExport)
+	return match ? match.map(match => match.replace(regNamedExport, '').trim()) : []
 }
 
 async function processFile(directory, file) {
 	try {
 		if (!SAVE_AS.includes(file) && INCLUDE_EXTENSIONS.some(ext => file.endsWith(ext))) {
-			const filePath = path.join(directory, file)
+			const filePath = loadFromRoot(directory, file)
 			const fileContent = await readFile(filePath)
 			const exportDefault = getDefaultExport(fileContent)
 			const exportGeneral = getGeneralExport(fileContent)
@@ -110,7 +117,7 @@ async function generateBarrel(directory) {
 			}
 		}
 
-		const barrelPath = path.join(directory, SAVE_AS)
+		const barrelPath = loadFromRoot(directory, SAVE_AS)
 		await writeFile(barrelPath, barrelContent.join(SEPARATE_BY_FILES))
 	} catch (error) {
 		console.error(`Error generating barrel for directory: ${directory}`)
@@ -122,7 +129,7 @@ async function processSubdirectories(directory) {
 	const subDirectories = await fs.readdir(directory)
 
 	for (const subDir of subDirectories) {
-		const fullPath = path.join(directory, subDir)
+		const fullPath = loadFromRoot(directory, subDir)
 		const stats = await fs.lstat(fullPath)
 
 		if (stats.isDirectory()) {
