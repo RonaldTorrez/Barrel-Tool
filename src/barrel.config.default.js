@@ -1,5 +1,6 @@
-const path = require('path')
-const config = require(path.join(process.cwd(), 'barrel.config.js'))
+const {loadFromRoot} = require('./barrel.util')
+const {configName} = require('./barrel.util')
+const config = require(loadFromRoot(configName))
 
 const barrelConfigDefault = {
 	dir: config.dir ?? [],
