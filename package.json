@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "barrel",
-    "generator"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RonaldTorrez/barrel-tool.git"
+  },
+  "keywords": [],
   "author": "Ronald Torrez <dev@ronaldtorrez.com>",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  }
+  "bugs": {
+    "url": "https://github.com/RonaldTorrez/barrel-tool/issues"
+  },
+  "homepage": "https://github.com/RonaldTorrez/barrel-tool#readme"
 }
