@@ -1,11 +1,9 @@
 {
   "name": "barrel-tool",
-  "version": "1.0.1",
+  "version": "1.0.29",
   "description": "Barrel generator",
   "main": "src/barrel.generator.js",
   "scripts": {
-    "postinstall": "node generate.config.js && chmod +x ./src/barrel.watch.js && npm link",
-    "publish": "npm publish",
     "dev": "npm exec node src/barrel.generator.js",
     "watch": "npm exec node src/barrel.watch.js"
   },
