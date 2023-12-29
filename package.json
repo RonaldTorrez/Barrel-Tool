@@ -1,10 +1,13 @@
 {
   "name": "barrel-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Barrel generator",
   "main": "src/barrel.generator.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node generate.config.js && chmod +x ./src/barrel.watch.js && npm link",
+    "publish": "npm publish",
+    "dev": "npm exec node src/barrel.generator.js",
+    "watch": "npm exec node src/barrel.watch.js"
   },
   "repository": {
     "type": "git",
