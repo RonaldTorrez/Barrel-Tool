@@ -23,10 +23,7 @@ function executeCommand() {
 
 function handleChanges(event, fileName) {
 	if (!fileName.includes(EXCLUSIONS)) {
-		// const indexFileRegex = /index\.ts$/
-		// if (!indexFileRegex.test(fileName)) {
 		executeCommand()
-		// }
 	}
 }
 
