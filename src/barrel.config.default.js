@@ -1,4 +1,5 @@
-const config = require('./barrel.config')
+const path = require('path')
+const config = require(path.join(process.cwd(), 'barrel.config.js'))
 
 const barrelConfigDefault = {
 	dir: config.dir ?? [],
@@ -7,8 +8,8 @@ const barrelConfigDefault = {
 	useExtension: config.useExtension ?? false,
 	separateByFiles: config.separateByFiles ?? false,
 	subFolders: config.subFolders ?? true,
-	includeExtensions: config.fileExtensions ?? ['.ts', '.tsx'],
-	exclusions: config.exclutions ?? []
+	includeExtensions: config.includeExtensions ?? ['.ts', '.tsx'],
+	exclusions: config.exclusions ?? []
 }
 
 const c = barrelConfigDefault
