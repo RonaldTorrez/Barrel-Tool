@@ -11,7 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/RonaldTorrez/barrel-tool.git"
   },
-  "keywords": [],
+  "keywords": [
+    "barrel",
+    "barrel-tool",
+    "barrel-generator",
+    "barrel-ts"
+  ],
   "author": "Ronald Torrez <dev@ronaldtorrez.com>",
   "license": "MIT",
   "bugs": {
