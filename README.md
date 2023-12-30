@@ -14,10 +14,10 @@ organize and export components from multiple files, making their importation mor
 
 - [Installation](#-installation)
 - [Usage](#-usage)
-    - [Add your directory names](#add-your-directory-names)
-    - [Generate barrels](#generate-barrels)
-    - [Watch barrels](#watch-barrels)
-    - [Add to package.json scripts](#add-to-packagejson-scripts)
+    - [Add your directory names](#--add-your-directory-names)
+    - [Generate barrels](#--generate-barrels)
+    - [Watch barrels](#--watch-barrels)
+    - [Add to package.json scripts](#--add-to-packagejson-scripts-_optional_)
 - [Settings](#-settings)
     - [Directory](#--directory)
     - [Save as](#--save-as)
@@ -55,7 +55,7 @@ module.exports = barrelConfig;
 
 ## # Usage
 
-### Add your directory names
+### - Add your directory names
 
 `barrel.config.js`
 
@@ -70,19 +70,19 @@ const barrelConfig = {
 module.exports = barrelConfig;
 ```
 
-### Generate barrels
+### - Generate barrels
 
 ```bash
 npx node node_modules/barrel-tool/src/barrel.generator.js 
 ```
 
-### Watch barrels
+### - Watch barrels
 
 ```bash
 npx node node_modules/barrel-tool/src/barrel.watch.js
 ```
 
-### Add to package.json scripts
+### - Add to package.json scripts _(optional)_
 
 ```json
 "scripts": {

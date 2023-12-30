@@ -1,6 +1,6 @@
 {
   "name": "barrel-tool",
-  "version": "1.0.3",
+  "version": "1.0.32",
   "description": "Barrel generator",
   "main": "src/barrel.generator.js",
   "scripts": {
