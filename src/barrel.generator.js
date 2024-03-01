@@ -1,6 +1,6 @@
 const fs = require('fs').promises
 const config = require('./barrel.config.default')
-const {loadFromRoot} = require('./barrel.util')
+const {loadFromRoot, loadFrom} = require('./barrel.util')
 const {
 	regExtension,
 	regGetDefaultExport,
@@ -129,7 +129,7 @@ async function processSubdirectories(directory) {
 	const subDirectories = await fs.readdir(directory)
 
 	for (const subDir of subDirectories) {
-		const fullPath = loadFromRoot(directory, subDir)
+		const fullPath = loadFrom(directory, subDir)
 		const stats = await fs.lstat(fullPath)
 
 		if (stats.isDirectory()) {
